@@ -1,4 +1,4 @@
-package pl.mskreczko.foodordering.User;
+package pl.mskreczko.foodordering.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

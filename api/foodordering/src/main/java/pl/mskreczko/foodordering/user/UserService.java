@@ -1,4 +1,4 @@
-package pl.mskreczko.foodordering.User;
+package pl.mskreczko.foodordering.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.mskreczko.foodordering.User.exceptions.UserException;
+import pl.mskreczko.foodordering.user.exceptions.UserException;
 
 @RequiredArgsConstructor
 @Service

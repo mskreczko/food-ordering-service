@@ -1,4 +1,4 @@
-package pl.mskreczko.foodordering.User;
+package pl.mskreczko.foodordering.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

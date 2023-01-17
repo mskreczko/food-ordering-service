@@ -9,9 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import pl.mskreczko.foodordering.User.UserRepository;
-import pl.mskreczko.foodordering.User.UserService;
-import pl.mskreczko.foodordering.User.exceptions.UserException;
+import pl.mskreczko.foodordering.user.exceptions.UserException;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
