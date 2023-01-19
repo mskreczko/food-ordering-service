@@ -29,6 +29,14 @@ services:
       - foodordering-data:/var/lib/postgresql/data
     networks:
       - spring-postgres
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
 volumes:
   foodordering-data:
 networks:
