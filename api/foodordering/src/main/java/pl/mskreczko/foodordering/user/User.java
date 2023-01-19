@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import pl.mskreczko.foodordering.user.role.Role;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,9 +20,12 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private UUID id;
+    private Long id;
 
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
     private boolean enabled;
 

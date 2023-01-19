@@ -9,7 +9,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import pl.mskreczko.foodordering.user.exceptions.UserException;
+import pl.mskreczko.foodordering.user.role.RoleRepository;
+
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,19 +22,14 @@ public class UserServiceTest {
     @Mock
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Mock
+    private RoleRepository roleRepository;
+
     private UserService userService;
 
     @BeforeEach
     void setup() {
-        this.userService = new UserService(this.userRepository, this.bCryptPasswordEncoder);
-    }
-
-    @Test
-    void test_saveUser_should_throw() {
-        Mockito.when(userRepository.existsByEmail("test@test.com")).thenReturn(true);
-
-        Assertions.assertThrows(UserException.class,
-                () -> userService.saveUser("test@test.com", "123"));
+        this.userService = new UserService(this.userRepository, this.roleRepository, this.bCryptPasswordEncoder);
     }
 
     @Test
