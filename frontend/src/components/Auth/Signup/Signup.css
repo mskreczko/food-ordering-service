@@ -1,0 +1,12 @@
+.form-submit-btn {
+    width: 100%;
+    background-color: #e69122;
+    border: none;
+    padding: 10px;
+}
+
+.form-submit-btn:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+}

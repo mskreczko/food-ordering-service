@@ -1,0 +1,44 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero > footer {
+    color: #000;
+    background-color: #e69122;
+    padding: 10px;
+}
+
+.social-icon {
+    font-size: 2em;
+    color: #fff;
+}
+
+.brand {
+    color: #e69122;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.sign-btn {
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin: 10px;
+    width: 100px;
+}
+
+.sign-btn:hover {
+    color: #fff;
+    background-color: #e69122;
+    border: none;
+}
+
+.nav-btn {
+    font-weight: bold;
+    color: #000;
+}
+
+.nav-route {
+    margin-left: 100px;
+}
