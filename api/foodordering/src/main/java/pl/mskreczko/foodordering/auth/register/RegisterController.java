@@ -3,10 +3,7 @@ package pl.mskreczko.foodordering.auth.register;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.mskreczko.foodordering.auth.register.dto.RegisterDto;
 
 @RequiredArgsConstructor
@@ -18,7 +15,7 @@ public class RegisterController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> register(@RequestBody RegisterDto credentials) {
-        if (registerService.registerUser(credentials.email(), credentials.password())) {
+        if (registerService.registerUser(credentials.email(), credentials.name(), credentials.password())) {
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } else {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();

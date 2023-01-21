@@ -1,4 +1,4 @@
 package pl.mskreczko.foodordering.auth.register.dto;
 
-public record RegisterDto(String email, String password) {
+public record RegisterDto(String email, String name, String password) {
 }
