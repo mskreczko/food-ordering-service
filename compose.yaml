@@ -12,6 +12,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD="${POSTGRES_PASSWORD}"
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create
       - SPRING_JPA_SHOW_SQL=true
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY=DEBUG
     networks:
       - spring-postgres
     depends_on:
@@ -29,6 +30,14 @@ services:
       - foodordering-data:/var/lib/postgresql/data
     networks:
       - spring-postgres
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
 volumes:
   foodordering-data:
 networks:
