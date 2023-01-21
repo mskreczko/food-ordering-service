@@ -52,7 +52,7 @@ export default function Signin() {
                     <Form.Control name='email' type='email' value={email} onChange={onChange} placeholder='Enter email'/>
                 </Form.Group>
 
-                <Form.Group className='mb-3' contro6GAlId='form-password'>
+                <Form.Group className='mb-3' controlId='form-password'>
                     <Form.Control name='password' type='password' value={password} onChange={onChange} placeholder='Password'/>
                 </Form.Group>
 
