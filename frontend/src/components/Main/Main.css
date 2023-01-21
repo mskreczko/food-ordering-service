@@ -1,0 +1,25 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    flex: 1;
+}
+
+.hero-img {
+    width: 60%;
+    height: 60%;
+}
+
+.hero-slogan {
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+#hero-slogan {
+    font-size: 6em;
+    text-transform: capitalize;
+    color: #000;
+    margin-left: 10%;
+}

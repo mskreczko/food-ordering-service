@@ -16,8 +16,8 @@ public class UserService implements UserDetailsService {
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public void saveUser(String email, String password) {
-        User u = new User(email, bCryptPasswordEncoder.encode(password));
+    public void saveUser(String email, String name, String password) {
+        User u = new User(email, name, bCryptPasswordEncoder.encode(password));
         u.getRoles().add(roleRepository.findByName("ROLE_CUSTOMER"));
         userRepository.save(u);
     }

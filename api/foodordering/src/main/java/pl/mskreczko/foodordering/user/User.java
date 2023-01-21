@@ -25,6 +25,9 @@ public class User implements UserDetails {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "password")
     private String password;
     private boolean enabled;
@@ -37,8 +40,9 @@ public class User implements UserDetails {
     )
     private Set<Role> roles = new HashSet<>();
 
-    public User(String email, String password) {
+    public User(String email, String name, String password) {
         this.email = email;
+        this.name = name;
         this.password = password;
         this.enabled = true;
     }
@@ -50,7 +54,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override

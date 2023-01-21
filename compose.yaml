@@ -12,6 +12,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD="${POSTGRES_PASSWORD}"
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create
       - SPRING_JPA_SHOW_SQL=true
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY=DEBUG
     networks:
       - spring-postgres
     depends_on:
