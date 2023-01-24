@@ -41,7 +41,7 @@ export default function Signin() {
         }).then((data) => {
             localStorage.setItem("token", data);
             setAuthenticated(true);
-            window.location.href = '/';
+            window.location.href = '/customer';
         }).catch(() => {});
     }
 
