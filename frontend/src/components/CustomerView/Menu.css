@@ -1,0 +1,11 @@
+.products {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    flex: 1;
+}
+
+.products-row {
+    margin: 0 5% 0 5%;
+}

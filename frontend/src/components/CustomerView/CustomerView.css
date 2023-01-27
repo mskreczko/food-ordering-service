@@ -1,0 +1,17 @@
+.customer-view {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    color: #000;
+    background-color: #e69122;
+    padding: 10px;
+}
+
+.social-icon {
+    font-size: 2em;
+    color: #fff;
+    margin: 15px;
+}

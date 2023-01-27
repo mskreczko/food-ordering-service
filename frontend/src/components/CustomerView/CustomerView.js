@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Outlet } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-
+import './CustomerView.css';
 export default function CustomerView() {
     const authenticated = useRecoilState(authenticationState)[0];
 
