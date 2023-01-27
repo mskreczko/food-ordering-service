@@ -41,4 +41,19 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
+
+    @DeleteMapping
+    public ResponseEntity<?> deleteProduct(@RequestParam Optional<Long> productId) {
+        if (productId.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        Optional<Product> p = productService.getProductById(productId.get());
+        if (p.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        productService.deleteById(productId.get());
+        return ResponseEntity.ok().build();
+    }
 }

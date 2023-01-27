@@ -33,4 +33,12 @@ public class ProductService {
                 .price(newProductDto.price())
                 .build());
     }
+
+    public Optional<Product> getProductById(Long productId) {
+        return productRepository.findById(productId);
+    }
+
+    public void deleteById(Long productId) {
+        productRepository.deleteById(productId);
+    }
 }
