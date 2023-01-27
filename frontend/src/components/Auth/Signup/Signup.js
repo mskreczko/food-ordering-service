@@ -36,7 +36,7 @@ export default function Signup() {
         e.preventDefault();
         signUpUser(email, name, password).then((response) => {
             if (response.status === 201) {
-                window.location.href = '/signup';
+                window.location.href = '/signin';
             }
         }).catch(() => {});
     }
