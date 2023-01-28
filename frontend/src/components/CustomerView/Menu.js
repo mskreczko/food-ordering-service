@@ -1,3 +1,5 @@
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, React } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 import { Audio } from 'react-loader-spinner';
@@ -40,6 +42,7 @@ export default function Menu() {
                         <p>{p.name}</p>
                         <p>{p.price}</p>
                         <p>{p.description}</p>
+                        <a><FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon></a>
                     </div>
                 )) : <Audio height='80' width='80' radius='6' color='gray' ariaLabel='loading'/>}
             </div>
