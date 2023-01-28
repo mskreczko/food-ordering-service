@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Outlet } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import './CustomerView.css';
+import ShoppingCart from './ShoppingCart/ShoppingCart';
 export default function CustomerView() {
     const authenticated = useRecoilState(authenticationState)[0];
 
@@ -26,6 +27,7 @@ export default function CustomerView() {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
+                <ShoppingCart/>
             </Navbar>
             <Outlet/>
            <footer>

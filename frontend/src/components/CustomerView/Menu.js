@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, React } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 import { Audio } from 'react-loader-spinner';
+import { addProductToCart } from './ShoppingCart/ShoppingCart';
 import './Menu.css';
 
 export default function Menu() {
@@ -36,13 +37,13 @@ export default function Menu() {
     return (
         <div className='products-wrapper'>
             <div className='products'>
-                {products ? products.map((p, idx) => (
-                    <div className='products-row' key={idx}>
+                {products ? products.map((p) => (
+                    <div className='products-row' key={p.id}>
                         <img src='https://via.placeholder.com/150' alt='placeholder'/>
                         <p>{p.name}</p>
                         <p>{p.price}</p>
                         <p>{p.description}</p>
-                        <a><FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon></a>
+                        <a onClick={() => addProductToCart(p)}><FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon></a>
                     </div>
                 )) : <Audio height='80' width='80' radius='6' color='gray' ariaLabel='loading'/>}
             </div>
