@@ -10,6 +10,7 @@ import Menu from './components/CustomerView/Menu';
 import { Routes, Route } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import './App.css';
+import ShoppingCartDetails from './components/CustomerView/ShoppingCart/ShoppingCartDetails/ShoppingCartDetails';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
             {/* Protected routes */}
             <Route path='/customer' element={<CustomerView/>}>
               <Route index element={<Menu/>}/>
+              <Route path='products' element={<ShoppingCartDetails/>}/>
             </Route>
 
             <Route path='/admin' element={<AdminView/>}>
