@@ -2,6 +2,10 @@ package pl.mskreczko.foodordering.admin.product;
 
 import jakarta.persistence.*;
 import lombok.*;
+import pl.mskreczko.foodordering.customer.order.Order;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -22,6 +26,9 @@ public class Product {
     private Double price;
 
     private String description;
+
+    @ManyToMany(mappedBy = "products")
+    private Set<Order> orders = new HashSet<>();
 
     public Product(String name, Double price, String description) {
         this.name = name;
