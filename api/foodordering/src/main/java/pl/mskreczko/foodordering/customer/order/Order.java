@@ -2,10 +2,7 @@ package pl.mskreczko.foodordering.customer.order;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pl.mskreczko.foodordering.admin.product.Product;
 import pl.mskreczko.foodordering.user.User;
 
@@ -18,6 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Setter
+@Getter
 @Table(name = "orders")
 public class Order {
 
@@ -25,6 +23,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "orders_products",

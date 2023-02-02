@@ -6,8 +6,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import pl.mskreczko.foodordering.admin.product.dto.NewProductDto;
 import pl.mskreczko.foodordering.exceptions.AlreadyExistsException;
+import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -36,6 +40,15 @@ public class ProductService {
 
     public Optional<Product> getProductById(Long productId) {
         return productRepository.findById(productId);
+    }
+
+    public Set<Product> getProductsByIds(List<Long> ids) throws NoSuchEntityException {
+        Set<Product> products = new HashSet<>();
+        for (Long id : ids) {
+            products.add(productRepository.findById(id).orElseThrow(() -> new NoSuchEntityException("Product with specified id does not exist")));
+        }
+
+        return products;
     }
 
     public void deleteById(Long productId) {

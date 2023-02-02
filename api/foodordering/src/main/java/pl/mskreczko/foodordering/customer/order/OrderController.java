@@ -5,6 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.mskreczko.foodordering.customer.order.dto.NewOrderDto;
+import pl.mskreczko.foodordering.customer.order.dto.OrderDetails;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -15,7 +18,13 @@ public class OrderController {
 
     @GetMapping("{order_id}")
     public ResponseEntity<?> getOrderDetails(@PathVariable("order_id") Long orderId) {
-        return ResponseEntity.of(orderService.getOrderDetails(orderId));
+        Optional<Order> order = orderService.getOrderDetails(orderId);
+        if (order.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        OrderDetails response = new OrderDetails(orderId, order.get().getDeliveryAddress(), order.get().getProducts());
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("{customer_id}")

@@ -1,5 +1,6 @@
 package pl.mskreczko.foodordering.admin.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import pl.mskreczko.foodordering.customer.order.Order;
@@ -27,6 +28,7 @@ public class Product {
 
     private String description;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "products")
     private Set<Order> orders = new HashSet<>();
 
