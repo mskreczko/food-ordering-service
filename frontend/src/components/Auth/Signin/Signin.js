@@ -18,6 +18,7 @@ async function signInUser(email, password) {
 export default function Signin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [authenticationSucessfull, setAuthenticationSucessfull] = useState(true);
     const setAuthenticated = useRecoilState(authenticationState)[1];
 
     const onChange = (e) => {
@@ -35,6 +36,7 @@ export default function Signin() {
         e.preventDefault();
         signInUser(email, password).then((response) => {
             if (!response.ok) {
+                setAuthenticationSucessfull(false);
                 throw new Error('error');
             }
             return response.text();
@@ -55,6 +57,8 @@ export default function Signin() {
                 <Form.Group className='mb-3' controlId='form-password'>
                     <Form.Control name='password' type='password' value={password} onChange={onChange} placeholder='Password'/>
                 </Form.Group>
+
+                { !authenticationSucessfull ? <Form.Text style={{color: 'red'}}>Invalid email or password</Form.Text> : null }
 
                 <Button className='form-submit-btn' variant='primary' type='submit'>
                     SIGN IN

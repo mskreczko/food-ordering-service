@@ -17,6 +17,7 @@ export default function Signup() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [emailAlreadyTaken, setEmailAlreadyTaken] = useState(false);
 
     const onChange = (e) => {
         switch (e.target.name) {
@@ -37,6 +38,8 @@ export default function Signup() {
         signUpUser(email, name, password).then((response) => {
             if (response.status === 201) {
                 window.location.href = '/signin';
+            } else if (response.status === 409) {
+                setEmailAlreadyTaken(true);
             }
         }).catch(() => {});
     }
@@ -46,6 +49,7 @@ export default function Signup() {
             <Form onSubmit={onSubmit}>
                 <Form.Group className='mb-3' controlId='form-email'>
                     <Form.Control name='email' type='email' value={email} onChange={onChange} placeholder='Enter email'/>
+                    { emailAlreadyTaken ? <Form.Text style={{color: 'red'}}>Email already taken.</Form.Text> : null }
                 </Form.Group>
 
                 <Form.Group className='mb-3' controlId='form-name'>
