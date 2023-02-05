@@ -3,6 +3,7 @@ package pl.mskreczko.foodordering.user;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -28,6 +30,9 @@ public class User implements UserDetails {
     private String name;
 
     private String password;
+
+    private Integer loyaltyPoints;
+
     private boolean enabled;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -43,6 +48,7 @@ public class User implements UserDetails {
         this.name = name;
         this.password = password;
         this.enabled = true;
+        this.loyaltyPoints = 0;
     }
 
     @Override

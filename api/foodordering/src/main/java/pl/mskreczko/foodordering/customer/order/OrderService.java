@@ -8,6 +8,7 @@ import pl.mskreczko.foodordering.admin.product.ProductService;
 import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 import pl.mskreczko.foodordering.user.User;
 import pl.mskreczko.foodordering.user.UserRepository;
+import pl.mskreczko.foodordering.user.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,18 +22,20 @@ public class OrderService {
     private final UserRepository userRepository;
 
     private final ProductService productService;
+    private final UserService userService;
 
     public Optional<Order> getOrderDetails(Long orderId) {
         return orderRepository.findById(orderId);
     }
 
-
     @Transactional
     public void createNewOrder(List<Long> productsIds, Long userId, String deliveryAddress) throws NoSuchEntityException {
-        Optional<User> user = userRepository.findById(userId);
-        if (user.isEmpty()) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isEmpty()) {
             throw new NoSuchEntityException("User with specified id does not exist");
         }
+
+        User user = userOptional.get();
 
         Order order = new Order();
         order.setDeliveryAddress(deliveryAddress);
@@ -42,7 +45,9 @@ public class OrderService {
             order.addProduct(p);
         }
 
-        order.setCustomer(user.get());
+        userService.addLoyaltyPoints(user);
+
+        order.setCustomer(user);
         orderRepository.save(order);
     }
 }

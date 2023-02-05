@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.mskreczko.foodordering.user.role.RoleRepository;
 
 @RequiredArgsConstructor
@@ -29,5 +30,12 @@ public class UserService implements UserDetailsService {
 
     public boolean doesUserExist(String email) {
         return userRepository.existsByEmail(email);
+    }
+
+    @Transactional
+    public void addLoyaltyPoints(User user) {
+        final int points = 10;
+        user.setLoyaltyPoints(user.getLoyaltyPoints() + points);
+        userRepository.save(user);
     }
 }
