@@ -43,7 +43,7 @@ export default function Menu() {
                         <p>{p.name}</p>
                         <p>{p.price}</p>
                         <p>{p.description}</p>
-                        <a onClick={() => addProductToCart(p)}><FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon></a>
+                        <a className='add-product-btn' onClick={() => addProductToCart(p)}>ADD TO CART</a>
                     </div>
                 )) : <Audio height='80' width='80' radius='6' color='gray' ariaLabel='loading'/>}
             </div>
