@@ -1,9 +1,9 @@
 package pl.mskreczko.foodordering.admin.product;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -21,12 +21,8 @@ public class ProductServiceTest{
     @Mock
     ProductRepository productRepository;
 
+    @InjectMocks
     ProductService productService;
-
-    @BeforeEach
-    void setup() {
-        this.productService = new ProductService(productRepository);
-    }
 
     @Test
     void getProductsByIds_throwsException() {
@@ -51,7 +47,6 @@ public class ProductServiceTest{
     void createNewProduct_throwsException() {
         Mockito.when(productRepository.existsByName("soup")).thenReturn(true);
         Assertions.assertThrows(AlreadyExistsException.class,
-                () -> {
-                    productService.createNewProduct(new NewProductDto("soup", 15., "chicken soup"));});
+                () -> productService.createNewProduct(new NewProductDto("soup", 15., "chicken soup")));
     }
 }
