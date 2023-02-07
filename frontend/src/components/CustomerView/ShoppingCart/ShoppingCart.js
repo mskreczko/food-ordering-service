@@ -39,7 +39,7 @@ export default function ShoppingCart() {
         <div style={{ margin: '0 3% 0 0'}}className='shopping-cart'>
             { removeListener() }
             <a href='/customer/products'><FontAwesomeIcon icon={faShoppingCart}/></a>
-            <p className='order-total-value'>{orderTotalValue}PLN</p>
+            <p className='order-total-value'>{orderTotalValue} PLN</p>
         </div>
     )
 }

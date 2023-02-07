@@ -40,7 +40,7 @@ export default function OrderCreation() {
                 <Form.Control name='address' type='text' value={deliveryAddress} onChange={onChange} placeholder='Enter delivery address'/>
             </Form.Group>
 
-            <Button className='form-submit-btn' variant='primary' type='submit'>
+            <Button style={{borderRadius: '25px'}}className='form-submit-btn' variant='primary' type='submit'>
                 MAKE AN ORDER
             </Button>
         </Form>

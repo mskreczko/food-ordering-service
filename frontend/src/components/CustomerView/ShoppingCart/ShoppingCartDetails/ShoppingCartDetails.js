@@ -1,4 +1,5 @@
 import { useState, useEffect, React } from 'react';
+import './ShoppingCartDetails.css';
 
 export default function ShoppingCartDetails() {
     const [listProducts, setListProducts] = useState([]);
@@ -9,15 +10,20 @@ export default function ShoppingCartDetails() {
     }, []);
 
     return (
-        <div style={{display: 'flex', flex: '1'}}>
-            <ul>
-                { listProducts && listProducts.map((p) => (
-                    <li key={p.id}>
-                        <p>{p.name}</p>
-                        <p>{p.price}</p>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <main id='shopping-cart-details'> 
+            <div className='list-div'>
+                <ul>
+                    { listProducts && listProducts.map((p, idx) => (
+                        <li key={idx}>
+                            <div style={{display: 'inline'}}>
+                                <p>{p.name}</p>
+                                <p>{p.price}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <a className='new-order-btn' href='/customer/order/new'>Make an order</a>
+        </main>
     )
 }
