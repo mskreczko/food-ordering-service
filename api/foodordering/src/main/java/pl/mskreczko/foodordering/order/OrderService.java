@@ -50,4 +50,8 @@ public class OrderService {
         order.setCustomer(user);
         orderRepository.save(order);
     }
+
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
 }
