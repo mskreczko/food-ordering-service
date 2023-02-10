@@ -39,6 +39,9 @@ public class Order {
 
     private String deliveryAddress;
 
+    @Enumerated(EnumType.ORDINAL)
+    private OrderStatus orderStatus;
+
     public void addProduct(Product product) {
         this.products.add(product);
         product.getOrders().add(this);

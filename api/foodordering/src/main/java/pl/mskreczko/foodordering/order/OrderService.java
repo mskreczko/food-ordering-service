@@ -30,15 +30,11 @@ public class OrderService {
 
     @Transactional
     public void createNewOrder(List<Long> productsIds, Long userId, String deliveryAddress) throws NoSuchEntityException {
-        Optional<User> userOptional = userRepository.findById(userId);
-        if (userOptional.isEmpty()) {
-            throw new NoSuchEntityException("User with specified id does not exist");
-        }
-
-        User user = userOptional.get();
+        User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchEntityException("User with specified id does not exist"));
 
         Order order = new Order();
         order.setDeliveryAddress(deliveryAddress);
+        order.setOrderStatus(OrderStatus.AWAITS);
 
         Set<Product> products = productService.getProductsByIds(productsIds);
         for (Product p : products) {
@@ -49,6 +45,10 @@ public class OrderService {
 
         order.setCustomer(user);
         orderRepository.save(order);
+    }
+
+    public void updateStatus(Long orderId, OrderStatus orderStatus) {
+        orderRepository.updateStatus(orderId, orderStatus.ordinal());
     }
 
     public List<Order> getAllOrders() {
