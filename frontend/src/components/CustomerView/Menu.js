@@ -1,5 +1,3 @@
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, React } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 import { Audio } from 'react-loader-spinner';
@@ -13,7 +11,7 @@ export default function Menu() {
 
     useEffect(() => {
         const fetchData = async () => {
-            await fetch('http://localhost:8080/api/v1/customer/menu?pageNumber=' + pageNumber, {
+            await fetch('http://localhost:8080/api/v1/customer/products?pageNumber=' + pageNumber, {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('token'),

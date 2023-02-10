@@ -1,9 +1,9 @@
-package pl.mskreczko.foodordering.admin.product;
+package pl.mskreczko.foodordering.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import pl.mskreczko.foodordering.customer.order.Order;
+import pl.mskreczko.foodordering.order.Order;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,6 +1,6 @@
-package pl.mskreczko.foodordering.customer.order.dto;
+package pl.mskreczko.foodordering.order.dto;
 
-import pl.mskreczko.foodordering.admin.product.Product;
+import pl.mskreczko.foodordering.product.Product;
 
 import java.util.Set;
 

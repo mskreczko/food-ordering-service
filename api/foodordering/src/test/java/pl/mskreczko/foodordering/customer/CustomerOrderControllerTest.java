@@ -1,4 +1,4 @@
-package pl.mskreczko.foodordering.customer.order;
+package pl.mskreczko.foodordering.customer;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -7,14 +7,16 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import pl.mskreczko.foodordering.order.Order;
+import pl.mskreczko.foodordering.order.OrderService;
 
 import java.util.Optional;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = OrderController.class)
-public class OrderControllerTest {
+@WebMvcTest(controllers = CustomerOrderController.class)
+public class CustomerOrderControllerTest {
 
     @MockBean
     private OrderService orderService;

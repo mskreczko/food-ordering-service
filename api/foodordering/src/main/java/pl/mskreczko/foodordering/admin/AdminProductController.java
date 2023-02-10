@@ -1,11 +1,13 @@
-package pl.mskreczko.foodordering.admin.product;
+package pl.mskreczko.foodordering.admin;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.mskreczko.foodordering.admin.product.dto.NewProductDto;
+import pl.mskreczko.foodordering.product.Product;
+import pl.mskreczko.foodordering.product.ProductService;
+import pl.mskreczko.foodordering.product.dto.NewProductDto;
 import pl.mskreczko.foodordering.exceptions.AlreadyExistsException;
 
 import java.util.HashMap;
@@ -14,8 +16,8 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/admin/menu")
-public class ProductController {
+@RequestMapping("/api/v1/admin/products")
+public class AdminProductController {
 
     private final ProductService productService;
 

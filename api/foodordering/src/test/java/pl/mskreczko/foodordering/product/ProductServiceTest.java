@@ -1,4 +1,4 @@
-package pl.mskreczko.foodordering.admin.product;
+package pl.mskreczko.foodordering.product;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pl.mskreczko.foodordering.admin.product.dto.NewProductDto;
+import pl.mskreczko.foodordering.product.dto.NewProductDto;
 import pl.mskreczko.foodordering.exceptions.AlreadyExistsException;
 import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 

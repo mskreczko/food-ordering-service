@@ -1,4 +1,4 @@
-package pl.mskreczko.foodordering.customer.order;
+package pl.mskreczko.foodordering.order;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -7,8 +7,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pl.mskreczko.foodordering.admin.product.Product;
-import pl.mskreczko.foodordering.admin.product.ProductService;
+import pl.mskreczko.foodordering.product.Product;
+import pl.mskreczko.foodordering.product.ProductService;
 import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 import pl.mskreczko.foodordering.user.User;
 import pl.mskreczko.foodordering.user.UserRepository;

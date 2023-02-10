@@ -1,4 +1,4 @@
-package pl.mskreczko.foodordering.admin.product;
+package pl.mskreczko.foodordering.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

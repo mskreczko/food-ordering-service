@@ -1,4 +1,4 @@
-package pl.mskreczko.foodordering.customer.order;
+package pl.mskreczko.foodordering.order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,10 +1,10 @@
-package pl.mskreczko.foodordering.customer.order;
+package pl.mskreczko.foodordering.order;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.mskreczko.foodordering.admin.product.Product;
-import pl.mskreczko.foodordering.admin.product.ProductService;
+import pl.mskreczko.foodordering.product.Product;
+import pl.mskreczko.foodordering.product.ProductService;
 import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 import pl.mskreczko.foodordering.user.User;
 import pl.mskreczko.foodordering.user.UserRepository;

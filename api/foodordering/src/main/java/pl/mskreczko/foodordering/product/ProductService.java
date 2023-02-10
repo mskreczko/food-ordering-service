@@ -1,10 +1,10 @@
-package pl.mskreczko.foodordering.admin.product;
+package pl.mskreczko.foodordering.product;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import pl.mskreczko.foodordering.admin.product.dto.NewProductDto;
+import pl.mskreczko.foodordering.product.dto.NewProductDto;
 import pl.mskreczko.foodordering.exceptions.AlreadyExistsException;
 import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 

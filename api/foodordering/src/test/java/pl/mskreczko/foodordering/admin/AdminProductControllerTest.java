@@ -1,4 +1,4 @@
-package pl.mskreczko.foodordering.admin.product;
+package pl.mskreczko.foodordering.admin;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -8,7 +8,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import pl.mskreczko.foodordering.admin.product.dto.NewProductDto;
+import pl.mskreczko.foodordering.admin.AdminProductController;
+import pl.mskreczko.foodordering.product.Product;
+import pl.mskreczko.foodordering.product.ProductService;
+import pl.mskreczko.foodordering.product.dto.NewProductDto;
 import pl.mskreczko.foodordering.exceptions.AlreadyExistsException;
 
 import java.util.Optional;
@@ -19,8 +22,8 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = ProductController.class)
-public class ProductControllerTest {
+@WebMvcTest(controllers = AdminProductController.class)
+public class AdminProductControllerTest {
 
     @MockBean
     private ProductService productService;
@@ -34,7 +37,7 @@ public class ProductControllerTest {
                 productService).createNewProduct(new NewProductDto("food", 1.0, "test"));
 
         mvc.perform(MockMvcRequestBuilders
-                .post("/api/v1/admin/menu").with(user("admin").roles("ADMIN"))
+                .post("/api/v1/admin/products").with(user("admin").roles("ADMIN"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\": \"food\", \"price\":  1.0, \"description\": \"test\"}").with(csrf()))
                 .andExpect(status().isConflict());
@@ -45,7 +48,7 @@ public class ProductControllerTest {
         doNothing().when(productService).createNewProduct(new NewProductDto("food", 1.0, "test"));
 
         mvc.perform(MockMvcRequestBuilders
-                .post("/api/v1/admin/menu").with(user("admin").roles("ADMIN"))
+                .post("/api/v1/admin/products").with(user("admin").roles("ADMIN"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\": \"food\", \"price\":  1.0, \"description\": \"test\"}").with(csrf()))
                 .andExpect(status().isCreated());
@@ -54,7 +57,7 @@ public class ProductControllerTest {
     @Test
     void deleteProduct_should_return_bad_request() throws Exception {
         mvc.perform(MockMvcRequestBuilders
-                .delete("/api/v1/admin/menu?productId=").with(user("admin").roles("ADMIN")).with(csrf()))
+                .delete("/api/v1/admin/products?productId=").with(user("admin").roles("ADMIN")).with(csrf()))
                 .andExpect(status().isBadRequest());
     }
 
@@ -63,7 +66,7 @@ public class ProductControllerTest {
         Mockito.when(productService.getProductById(1L)).thenReturn(Optional.empty());
 
         mvc.perform(MockMvcRequestBuilders
-                .delete("/api/v1/admin/menu?productId=1").with(user("admin").roles("ADMIN")).with(csrf()))
+                .delete("/api/v1/admin/products?productId=1").with(user("admin").roles("ADMIN")).with(csrf()))
                 .andExpect(status().isConflict());
     }
 
@@ -75,7 +78,7 @@ public class ProductControllerTest {
         doNothing().when(productService).deleteById(1L);
 
         mvc.perform(MockMvcRequestBuilders
-                .delete("/api/v1/admin/menu?productId=1").with(user("admin").roles("ADMIN")).with(csrf()))
+                .delete("/api/v1/admin/products?productId=1").with(user("admin").roles("ADMIN")).with(csrf()))
                 .andExpect(status().isOk());
     }
 }

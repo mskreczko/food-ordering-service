@@ -1,18 +1,20 @@
-package pl.mskreczko.foodordering.customer.order;
+package pl.mskreczko.foodordering.customer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.mskreczko.foodordering.customer.order.dto.NewOrderDto;
-import pl.mskreczko.foodordering.customer.order.dto.OrderDetails;
+import pl.mskreczko.foodordering.order.Order;
+import pl.mskreczko.foodordering.order.OrderService;
+import pl.mskreczko.foodordering.order.dto.NewOrderDto;
+import pl.mskreczko.foodordering.order.dto.OrderDetails;
 
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/customer/orders")
-public class OrderController {
+public class CustomerOrderController {
 
     private final OrderService orderService;
 
