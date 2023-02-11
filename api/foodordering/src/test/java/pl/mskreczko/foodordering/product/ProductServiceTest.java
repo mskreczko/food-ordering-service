@@ -25,7 +25,7 @@ public class ProductServiceTest{
     ProductService productService;
 
     @Test
-    void getProductsByIds_throwsException() {
+    void getProductsByIds_should_throw() {
         Mockito.when(productRepository.findById(1L)).thenReturn(Optional.empty());
         Assertions.assertThrows(NoSuchEntityException.class,
                 () -> productService.getProductsByIds(List.of(1L, 2L)));
@@ -44,7 +44,7 @@ public class ProductServiceTest{
     }
 
     @Test
-    void createNewProduct_throwsException() {
+    void createNewProduct_should_throw() {
         Mockito.when(productRepository.existsByName("soup")).thenReturn(true);
         Assertions.assertThrows(AlreadyExistsException.class,
                 () -> productService.createNewProduct(new NewProductDto("soup", 15., "chicken soup")));

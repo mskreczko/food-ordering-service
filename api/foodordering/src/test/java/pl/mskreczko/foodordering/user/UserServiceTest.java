@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 import pl.mskreczko.foodordering.user.role.RoleRepository;
 
 import java.util.Optional;
@@ -33,10 +34,18 @@ public class UserServiceTest {
     }
 
     @Test
-    void test_loadUserByUsername_should_throw() {
+    void loadUserByUsername_should_throw() {
         Mockito.when(userRepository.findByEmail("test@test.com")).thenReturn(Optional.empty());
 
         Assertions.assertThrows(UsernameNotFoundException.class,
                 () -> userService.loadUserByUsername("test@test.com"));
+    }
+
+    @Test
+    void loadUserById_should_throw() {
+        Mockito.when(userRepository.findById(1L)).thenReturn(Optional.empty());
+
+        Assertions.assertThrows(NoSuchEntityException.class,
+                () -> userService.loadUserById(1L));
     }
 }

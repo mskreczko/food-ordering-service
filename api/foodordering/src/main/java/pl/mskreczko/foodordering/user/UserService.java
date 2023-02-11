@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 import pl.mskreczko.foodordering.user.role.RoleRepository;
 
 @RequiredArgsConstructor
@@ -26,6 +27,10 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Could not find user"));
+    }
+
+    public User loadUserById(Long id) throws NoSuchEntityException {
+        return userRepository.findById(id).orElseThrow(() -> new NoSuchEntityException(("No user with given id")));
     }
 
     public boolean doesUserExist(String email) {
