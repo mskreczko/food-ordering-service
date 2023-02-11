@@ -24,7 +24,7 @@ public class CustomerAccountControllerTest {
     MockMvc mvc;
 
     @Test
-    void getAccountDetails_returnsDetails() throws Exception {
+    void getAccountDetails_should_return_ok() throws Exception {
         Mockito.when(userService.loadUserById(1L)).thenReturn(new User());
 
         mvc.perform(MockMvcRequestBuilders
@@ -33,7 +33,7 @@ public class CustomerAccountControllerTest {
     }
 
     @Test
-    void getAccountDetails_returnsNotFound() throws Exception {
+    void getAccountDetails_should_return_not_found() throws Exception {
         Mockito.when(userService.loadUserById(1L)).thenThrow(new NoSuchEntityException("No user with given id"));
 
         mvc.perform(MockMvcRequestBuilders

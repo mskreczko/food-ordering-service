@@ -32,7 +32,7 @@ public class ProductServiceTest{
     }
 
     @Test
-    void getProductsByIds_returnsProducts() {
+    void getProductsByIds_should_return_products() {
         Product p1 = new Product();
         Product p2 = new Product();
         Mockito.when(productRepository.findById(1L)).thenReturn(Optional.of(p1));

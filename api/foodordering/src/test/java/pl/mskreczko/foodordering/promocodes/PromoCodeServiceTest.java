@@ -18,7 +18,7 @@ public class PromoCodeServiceTest {
     private PromoCodeService promoCodeService;
 
     @Test
-    void verifyCode_returnsTrue() {
+    void verifyCode_should_return_true() {
         Mockito.when(promoCodeRepository.existsByCode("ABC12D")).thenReturn(true);
 
         var result = promoCodeService.verifyCode("ABC12D");
@@ -27,7 +27,7 @@ public class PromoCodeServiceTest {
     }
 
     @Test
-    void verifyCode_returnsFalse() {
+    void verifyCode_should_return_false() {
         Mockito.when(promoCodeRepository.existsByCode("ABC12D")).thenReturn(false);
 
         var result = promoCodeService.verifyCode("ABC12D");
@@ -36,7 +36,7 @@ public class PromoCodeServiceTest {
     }
 
     @Test
-    void generateCode_returnsCode() {
+    void generateCode_should_return_true() {
         var code = promoCodeService.generateCode(10.0);
 
         Assertions.assertEquals(6, code.length());
