@@ -7,10 +7,12 @@ import CustomerView from './components/CustomerView/CustomerView';
 import AdminView from './components/AdminView/AdminView';
 import AdminPanel from './components/AdminView/AdminPanel';
 import Menu from './components/CustomerView/Menu';
+import AccountDetails from './components/CustomerView/AccountDetails/AccountDetails';
 import { Routes, Route } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import './App.css';
 import ShoppingCartDetails from './components/CustomerView/ShoppingCart/ShoppingCartDetails/ShoppingCartDetails';
+import OrderCreation from './components/CustomerView/Order/OrderCreation';
 
 export default function App() {
   return (
@@ -29,6 +31,8 @@ export default function App() {
             <Route path='/customer' element={<CustomerView/>}>
               <Route index element={<Menu/>}/>
               <Route path='products' element={<ShoppingCartDetails/>}/>
+              <Route path='order/new' element={<OrderCreation/>}/>
+              <Route path='account' element={<AccountDetails/>}/>
             </Route>
 
             <Route path='/admin' element={<AdminView/>}>

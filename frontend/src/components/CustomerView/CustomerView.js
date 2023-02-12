@@ -22,7 +22,7 @@ export default function CustomerView() {
                 <Container>
                     <Navbar.Collapse id='response-navbar-nav'>
                         <Nav>
-                            <Nav.Link className='nav-btn' href='/account'>My Account</Nav.Link>
+                            <Nav.Link className='nav-btn' href='/customer/account'>My Account</Nav.Link>
                             <Nav.Link className='nav-btn' href='/logout'>Logout</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
