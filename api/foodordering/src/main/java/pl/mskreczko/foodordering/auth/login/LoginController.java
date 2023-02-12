@@ -23,6 +23,7 @@ public class LoginController {
         } catch (UsernameNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
+
         return ResponseEntity.ok(loginService.getJwtToken(credentials.email()));
     }
 }
