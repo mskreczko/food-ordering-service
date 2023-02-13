@@ -8,7 +8,7 @@ function getProductsFromStorage() {
 
 async function makeAnOrder(deliveryAddress) {
     const ids = getProductsFromStorage().map((p) => p.id);
-    return await fetch('http://localhost:8080/api/v1/customer/orders/1', {
+    return await fetch('http://localhost:8080/api/v1/customer/orders', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -31,7 +31,9 @@ export default function OrderCreation() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        makeAnOrder(deliveryAddress).then((response) => console.log(response));
+        makeAnOrder(deliveryAddress).then((response) => {
+            window.location.href = response.headers.get('Location');
+        });
     }
 
     return (
