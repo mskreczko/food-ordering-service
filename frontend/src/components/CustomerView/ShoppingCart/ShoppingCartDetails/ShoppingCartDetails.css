@@ -24,6 +24,10 @@
     display: inline;
 }
 
+.left-align {
+    float: left;
+}
+
 #promo-code-form {
     width: 20%;
 }

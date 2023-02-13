@@ -40,7 +40,7 @@ export default function ShoppingCartDetails() {
         setListProducts(products);
         let x = products.reduce((acc, p) => {
             return acc + p.price
-        }, 0);
+        }, 0.0);
         setTotalValue(x);
 
     }, []);
@@ -51,8 +51,8 @@ export default function ShoppingCartDetails() {
                 { listProducts && listProducts.map((p, idx) => (
                     <li key={idx}>
                         <div className='item-details'>
-                            <p className='item-text'>{p.name} </p>
-                            <p className='item-text'>{p.price}</p>
+                            <p className='item-text left-align'>{p.name} </p>
+                            <p className='item-text'>{p.price} $</p>
                         </div>
                     </li>
                 ))}
