@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 import pl.mskreczko.foodordering.product.Product;
 import pl.mskreczko.foodordering.product.ProductService;
 import pl.mskreczko.foodordering.product.dto.NewProductDto;
@@ -45,17 +46,13 @@ public class AdminProductController {
     }
 
     @DeleteMapping
-    public ResponseEntity<?> deleteProduct(@RequestParam Optional<Long> productId) {
-        if (productId.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-
-        Optional<Product> p = productService.getProductById(productId.get());
-        if (p.isEmpty()) {
+    public ResponseEntity<?> deleteProduct(@RequestParam Long productId) {
+        try {
+            productService.getProductById(productId).ifPresentOrElse((p) -> productService.deleteById(p.getId()),
+                    () -> { throw new NoSuchEntityException("Such product does not exist"); });
+        } catch (NoSuchEntityException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-
-        productService.deleteById(productId.get());
         return ResponseEntity.ok().build();
     }
 }
