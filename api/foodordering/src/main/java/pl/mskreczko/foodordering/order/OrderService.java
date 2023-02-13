@@ -29,7 +29,7 @@ public class OrderService {
     }
 
     @Transactional
-    public void createNewOrder(List<Long> productsIds, Long userId, String deliveryAddress) throws NoSuchEntityException {
+    public Long createNewOrder(List<Long> productsIds, Long userId, String deliveryAddress) throws NoSuchEntityException {
         User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchEntityException("User with specified id does not exist"));
 
         Order order = new Order();
@@ -44,7 +44,7 @@ public class OrderService {
         userService.addLoyaltyPoints(user);
 
         order.setCustomer(user);
-        orderRepository.save(order);
+        return orderRepository.save(order).getId();
     }
 
     public void updateStatus(Long orderId, OrderStatus orderStatus) {

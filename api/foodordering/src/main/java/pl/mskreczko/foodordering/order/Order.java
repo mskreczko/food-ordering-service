@@ -9,7 +9,6 @@ import pl.mskreczko.foodordering.user.User;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

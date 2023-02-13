@@ -1,7 +1,6 @@
 package pl.mskreczko.foodordering.customer;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.mskreczko.foodordering.order.Order;
@@ -9,6 +8,7 @@ import pl.mskreczko.foodordering.order.OrderService;
 import pl.mskreczko.foodordering.order.dto.NewOrderDto;
 import pl.mskreczko.foodordering.order.dto.OrderDetails;
 
+import java.net.URI;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -31,7 +31,7 @@ public class CustomerOrderController {
 
     @PostMapping("{customer_id}")
     public ResponseEntity<?> makeOrder(@RequestBody NewOrderDto newOrder, @PathVariable("customer_id") Long customerId) {
-        orderService.createNewOrder(newOrder.productsIds(), customerId, newOrder.deliveryAddress());
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        Long orderId = orderService.createNewOrder(newOrder.productsIds(), customerId, newOrder.deliveryAddress());
+        return ResponseEntity.created(URI.create("/api/v1/customer/orders/" + orderId)).build();
     }
 }

@@ -5,14 +5,17 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import pl.mskreczko.foodordering.order.Order;
 import pl.mskreczko.foodordering.order.OrderService;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = CustomerOrderController.class)
@@ -38,9 +41,20 @@ public class CustomerOrderControllerTest {
     void getOrderDetails_should_return_not_found() throws Exception {
         Mockito.when(orderService.getOrderDetails(1L)).thenReturn(Optional.empty());
 
-
         mvc.perform(MockMvcRequestBuilders
                 .get("/api/v1/customer/orders/1").with(user("customer").roles("CUSTOMER")))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void makeOrder_should_return_created() throws Exception {
+        Mockito.when(orderService.createNewOrder(List.of(), 1L, "asdf")).thenReturn(1L);
+
+        mvc.perform(MockMvcRequestBuilders
+                .post("/api/v1/customer/orders/1").with(user("customer").roles("CUSTOMER"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"productsIds\": [], \"deliveryAddress\": \"asdf\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(redirectedUrl("/api/v1/customer/orders/1"));
     }
 }
