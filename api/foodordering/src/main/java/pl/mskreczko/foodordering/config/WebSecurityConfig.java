@@ -18,7 +18,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import pl.mskreczko.foodordering.user.UserService;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -59,6 +58,7 @@ public class WebSecurityConfig {
         corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000"));
         corsConfiguration.setAllowedMethods(List.of(CorsConfiguration.ALL));
         corsConfiguration.setAllowedHeaders(List.of(CorsConfiguration.ALL));
+        corsConfiguration.setExposedHeaders(List.of("Location"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsFilter(source);
