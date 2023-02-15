@@ -14,7 +14,7 @@ async function getDiscount(code) {
 export default function ShoppingCartDetails() {
     const [listProducts, setListProducts] = useState([]);
     const [promoCode, setPromoCode] = useState('');
-    const [validPromoCode, setValidPromoCode] = useState(true);
+    const [invalidPromoCode, setInvalidPromoCode] = useState(true);
     const [totalValue, setTotalValue] = useState(0.0);
     const [discount, setDiscount] = useState(1.0);
 
@@ -25,12 +25,14 @@ export default function ShoppingCartDetails() {
     const onSubmit = (e) => {
         e.preventDefault();
         getDiscount(promoCode).then((response) => {
-            if (!response.ok) {
-                setValidPromoCode(false);
+            if (response.status === 404) {
+                setInvalidPromoCode(false);
+                throw("");
             }
             return response.text();
         }).then((data) => {
             setDiscount(data);
+            setInvalidPromoCode(true);
             setTotalValue(totalValue - (totalValue * data));
         }).catch(() => {});
     }
@@ -52,15 +54,16 @@ export default function ShoppingCartDetails() {
                     <li key={idx}>
                         <div className='item-details'>
                             <p className='item-text left-align'>{p.name} </p>
-                            <p className='item-text'>{p.price} $</p>
+                            <p className='item-text'>{p.price} PLN</p>
                         </div>
                     </li>
                 ))}
             </ul>
-            <p>TOTAL: { totalValue }</p>
+            <p>TOTAL: { totalValue } PLN</p>
             <Form id='promo-code-form' onSubmit={ onSubmit }>
                 <Form.Group>
                     <Form.Control name='promo-code' type='text' value={ promoCode } onChange={ onChange } placeholder='Enter your code here'/>
+                    { !invalidPromoCode ? <Form.Text style={{color: 'red'}}>Invalid promo code</Form.Text> : null }
                     <Button id='code-submit-btn' variant='primary' type='submit'>Use promo code</Button>
                 </Form.Group>
             </Form>
