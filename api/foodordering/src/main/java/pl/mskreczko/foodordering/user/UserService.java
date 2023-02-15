@@ -43,4 +43,15 @@ public class UserService implements UserDetailsService {
         user.setLoyaltyPoints(user.getLoyaltyPoints() + points);
         userRepository.save(user);
     }
+
+    @Transactional
+    public boolean changePassword(User user, String oldPassword, String newPassword) {
+        if (!bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
+            return false;
+        }
+
+        user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+        userRepository.save(user);
+        return true;
+    }
 }

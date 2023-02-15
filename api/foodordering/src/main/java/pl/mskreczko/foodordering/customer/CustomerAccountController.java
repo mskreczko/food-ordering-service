@@ -8,6 +8,7 @@ import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 import pl.mskreczko.foodordering.user.User;
 import pl.mskreczko.foodordering.user.UserService;
 import pl.mskreczko.foodordering.user.dto.AccountDetailsDto;
+import pl.mskreczko.foodordering.user.dto.PasswordChangeDto;
 
 @RequiredArgsConstructor
 @RestController
@@ -22,6 +23,20 @@ public class CustomerAccountController {
             String email = SecurityContextHolder.getContext().getAuthentication().getName();
             User user = (User) userService.loadUserByUsername(email);
             return ResponseEntity.ok(new AccountDetailsDto(user.getEmail(), user.getName(), user.getLoyaltyPoints()));
+        } catch (NoSuchEntityException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("changePassword")
+    public ResponseEntity<?> changePassword(@RequestBody PasswordChangeDto passwordChangeDto) {
+        try {
+            String email = SecurityContextHolder.getContext().getAuthentication().getName();
+            User user = (User) userService.loadUserByUsername(email);
+            if (!userService.changePassword(user, passwordChangeDto.oldPassword(), passwordChangeDto.newPassword())) {
+                return ResponseEntity.internalServerError().build();
+            }
+            return ResponseEntity.ok().build();
         } catch (NoSuchEntityException e) {
             return ResponseEntity.notFound().build();
         }
