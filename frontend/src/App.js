@@ -14,6 +14,7 @@ import './App.css';
 import ShoppingCartDetails from './components/CustomerView/ShoppingCart/ShoppingCartDetails/ShoppingCartDetails';
 import OrderCreation from './components/CustomerView/Order/OrderCreation';
 import OrderDetails from './components/CustomerView/Order/OrderDetails';
+import NewPassword from './components/CustomerView/AccountDetails/NewPassword';
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
               <Route path='order/new' element={<OrderCreation/>}/>
               <Route path='order/:id' element={<OrderDetails/>}/>
               <Route path='account' element={<AccountDetails/>}/>
+              <Route path='account/changePassword' element={<NewPassword/>}/>
             </Route>
 
             <Route path='/admin' element={<AdminView/>}>

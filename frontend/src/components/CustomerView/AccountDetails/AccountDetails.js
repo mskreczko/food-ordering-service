@@ -1,4 +1,5 @@
 import { useState, useEffect, React } from 'react';
+import { Link } from 'react-router-dom';
 import './AccountDetails.css';
 
 const fetchAccountDetails = async () => {
@@ -25,6 +26,8 @@ export default function AccountDetails() {
                 <p>Email: { accountInfo.email} </p>
                 <p>Loyalty points: { accountInfo.loyaltyPoints }</p>
             </div>
+            <Link className='change-btn' to='changePassword'>Change password</Link>
+            <Link className='change-btn' to='changeEmail'>Change email</Link>
         </main>
     )
 }
