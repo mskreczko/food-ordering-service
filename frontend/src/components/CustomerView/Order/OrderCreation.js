@@ -48,19 +48,19 @@ export default function OrderCreation() {
                     <Form.Control required name='address' type='text' value={deliveryAddress} onChange={onChange} placeholder='Enter delivery address'/>
                 </Form.Group>
                 <Form.Group className='mb-3 pay-div'>
-                    <Form.Control style={{ position: 'fixed' }} value={paymentMethod} onChange={onChange} className='btn-check' name='payment-method' id='payment-method-paypal' type='checkbox' autoComplete='off'/>
+                    <Form.Control style={{ position: 'fixed' }} value={paymentMethod} onChange={onChange} className='btn-check' name='payment-method' id='payment-method-paypal' type='radio' autoComplete='off'/>
                     <Form.Label className='btn btn-outline-primary payment-btn' htmlFor='payment-method-paypal'>PayPal</Form.Label>
                 </Form.Group>
                 <Form.Group className='mb-3 pay-div'>
-                    <Form.Control style={{ position: 'fixed' }} value={paymentMethod} onChange={onChange} className='btn-check' name='payment-method' id='payment-method-blik' type='checkbox' autoComplete='off'/>
+                    <Form.Control style={{ position: 'fixed' }} value={paymentMethod} onChange={onChange} className='btn-check' name='payment-method' id='payment-method-blik' type='radio' autoComplete='off'/>
                     <Form.Label className='btn btn-outline-primary payment-btn' htmlFor='payment-method-blik'>BLIK</Form.Label>
                 </Form.Group>
                 <Form.Group className='mb-3 pay-div'>
-                    <Form.Control style={{ position: 'fixed' }} value={paymentMethod} onChange={onChange} className='btn-check' name='payment-method' id='payment-method-visa' type='checkbox' autoComplete='off'/>
+                    <Form.Control style={{ position: 'fixed' }} value={paymentMethod} onChange={onChange} className='btn-check' name='payment-method' id='payment-method-visa' type='radio' autoComplete='off'/>
                     <Form.Label className='btn btn-outline-primary payment-btn' htmlFor='payment-method-visa'>VISA</Form.Label>
                 </Form.Group>
                 <Form.Group className='mb-3 pay-div'>
-                    <Form.Control style={{ position: 'fixed' }} value={paymentMethod} onChange={onChange} className='btn-check' name='payment-method' id='payment-method-mastercard' type='checkbox' autoComplete='off'/>
+                    <Form.Control style={{ position: 'fixed' }} value={paymentMethod} onChange={onChange} className='btn-check' name='payment-method' id='payment-method-mastercard' type='radio' autoComplete='off'/>
                     <Form.Label className='btn btn-outline-primary payment-btn' htmlFor='payment-method-mastercard'>MasterCard</Form.Label>
                 </Form.Group>
 

@@ -1,7 +1,7 @@
 import { useEffect, useState, React } from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function OrderDetails(props) {
+export default function OrderDetails() {
     const [order, setOrderDetails] = useState({});
     const orderId = useParams();
 
@@ -16,9 +16,9 @@ export default function OrderDetails(props) {
     }, []);
 
     return (
-        <main>
-            <p>{ order.deliveryAddress }</p>
-            <p>{ order.status }</p>
+        <main style={{ flexDirection: 'column' }}>
+            <p>DELIVERY TO: { order.deliveryAddress }</p>
+            <p>STATUS: { order.status }</p>
         </main>
     )
 }

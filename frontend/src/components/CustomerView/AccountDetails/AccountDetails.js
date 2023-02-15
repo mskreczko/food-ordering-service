@@ -19,9 +19,12 @@ export default function AccountDetails() {
 
     return (
         <main id='account-info'>
-            <p>Name: { accountInfo.name} </p>
-            <p>Email: { accountInfo.email} </p>
-            <p>Loyalty points: { accountInfo.loyaltyPoints }</p>
+            <h2>Account Details</h2>
+            <div id='info'>
+                <p>Name: { accountInfo.name} </p>
+                <p>Email: { accountInfo.email} </p>
+                <p>Loyalty points: { accountInfo.loyaltyPoints }</p>
+            </div>
         </main>
     )
 }
