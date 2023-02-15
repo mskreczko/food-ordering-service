@@ -21,8 +21,8 @@ public class AdminOrderController {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
 
-    @PatchMapping("/status")
-    public ResponseEntity<?> updateOrderStatus(@PathVariable Long orderId, @RequestParam Integer status) {
+    @PatchMapping("/status/{order_id}")
+    public ResponseEntity<?> updateOrderStatus(@PathVariable("order_id") Long orderId, @RequestParam Integer status) {
         orderService.updateStatus(orderId, OrderStatus.values()[status]);
         return ResponseEntity.ok().build();
     }
