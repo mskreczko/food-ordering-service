@@ -54,4 +54,15 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
         return true;
     }
+
+    @Transactional
+    public boolean changeEmail(User user, String oldEmail, String newEmail) {
+        if (!oldEmail.equals(newEmail)) {
+            return false;
+        }
+
+        user.setEmail(newEmail);
+        userRepository.save(user);
+        return true;
+    }
 }
