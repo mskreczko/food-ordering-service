@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import pl.mskreczko.foodordering.auth.login.dto.LoginDto;
+import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
+import pl.mskreczko.foodordering.notifications.EmailNotifier;
 
 @RequiredArgsConstructor
 @RestController
@@ -13,6 +15,7 @@ import pl.mskreczko.foodordering.auth.login.dto.LoginDto;
 public class LoginController {
 
     private final LoginService loginService;
+    private final EmailNotifier emailNotifier;
 
     @PostMapping("/signin")
     public ResponseEntity<?> login(@RequestBody LoginDto credentials) {
@@ -25,5 +28,17 @@ public class LoginController {
         }
 
         return ResponseEntity.ok(loginService.getJwtToken(credentials.email()));
+    }
+
+    @GetMapping("/forgotPassword")
+    public ResponseEntity<?> forgotPassword(@RequestParam("email") String email) {
+        try {
+            var token = loginService.generatePasswordResetToken(email);
+            String resetUrl = "http://localhost:3000/resetPassword/" + token;
+            // emailNotifier.sendNotification("email", resetUrl);
+        } catch (NoSuchEntityException e) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().build();
     }
 }
