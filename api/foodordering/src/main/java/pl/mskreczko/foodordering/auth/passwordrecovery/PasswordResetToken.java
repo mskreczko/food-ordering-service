@@ -4,9 +4,14 @@ import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import pl.mskreczko.foodordering.user.User;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @NoArgsConstructor
 @Entity
 public class PasswordResetToken {
+
+    private static final int EXPIRATION = 3;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +26,8 @@ public class PasswordResetToken {
     public PasswordResetToken(User user, String token) {
         this.user = user;
         this.token = token;
+        this.expiration = LocalDateTime.now().plusMinutes(EXPIRATION);
     }
+
+    LocalDateTime expiration;
 }
