@@ -56,6 +56,12 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
+    public void resetPassword(User user, String newPassword) {
+        user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+        userRepository.save(user);
+    }
+
+    @Transactional
     public boolean changeEmail(User user, String oldEmail, String newEmail) {
         if (!oldEmail.equals(newEmail)) {
             return false;

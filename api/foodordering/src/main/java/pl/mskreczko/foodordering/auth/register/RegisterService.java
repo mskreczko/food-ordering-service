@@ -20,7 +20,7 @@ public class RegisterService {
 
         userService.saveUser(email, name, password);
 
-        emailNotifier.sendNotification("mic.skreczko@gmail.com", "thank you for signing in");
+        // emailNotifier.sendNotification(email, "thank you for signing in");
 
         return true;
     }
