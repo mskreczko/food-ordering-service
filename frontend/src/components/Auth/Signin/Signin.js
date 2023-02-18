@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useRecoilState } from 'recoil';
 import { authenticationState } from '../../atoms/AuthenticationAtom';
+import { Link } from 'react-router-dom';
 import './Signin.css';
 
 async function signInUser(email, password) {
@@ -56,6 +57,7 @@ export default function Signin() {
 
                 <Form.Group className='mb-3' controlId='form-password'>
                     <Form.Control name='password' type='password' value={password} onChange={onChange} placeholder='Password'/>
+                    <Link to='/forgotPassword'>Forgot your password?</Link>
                 </Form.Group>
 
                 { !authenticationSucessfull ? <Form.Text style={{color: 'red'}}>Invalid email or password</Form.Text> : null }

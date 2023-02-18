@@ -16,6 +16,8 @@ import OrderCreation from './components/CustomerView/Order/OrderCreation';
 import OrderDetails from './components/CustomerView/Order/OrderDetails';
 import NewPassword from './components/CustomerView/AccountDetails/NewPassword';
 import NewEmail from './components/CustomerView/AccountDetails/NewEmail';
+import ForgotPassword from './components/Auth/ForgotPassword';
+import ResetPassword from './components/Auth/ResetPassword';
 
 export default function App() {
   return (
@@ -27,7 +29,9 @@ export default function App() {
               <Route index element={<Main/>}/>
               <Route path='signup' element={<Signup/>}/>
               <Route path='signin' element={<Signin/>}/>
+              <Route path='forgotPassword' element={<ForgotPassword/>}/>
               <Route path='logout' element={<Logout/>}/>
+              <Route exact path='resetPassword/:token' element={<ResetPassword/>}/>
             </Route>
 
             {/* Protected routes */}
