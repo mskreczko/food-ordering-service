@@ -17,7 +17,7 @@ build_api() {
     $(docker build --no-cache -t food-ordering-service-api api/foodordering >> /tmp/err.txt)
 }
 
-docker-compose down
+docker-compose down --remove-orphans
 
 if [ $# -ge 2 ]
 then
