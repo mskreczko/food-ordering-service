@@ -57,12 +57,12 @@ export default function Signin() {
 
                 <Form.Group className='mb-3' controlId='form-password'>
                     <Form.Control name='password' type='password' value={password} onChange={onChange} placeholder='Password'/>
-                    <Link to='/forgotPassword'>Forgot your password?</Link>
+                    <Link style={{ fontSize: '0.7em', float: 'right' }}to='/forgotPassword'>Forgot your password?</Link>
                 </Form.Group>
 
                 { !authenticationSucessfull ? <Form.Text style={{color: 'red'}}>Invalid email or password</Form.Text> : null }
 
-                <Button className='form-submit-btn' variant='primary' type='submit'>
+                <Button style={{ marginTop: '10px' }}className='form-submit-btn' variant='primary' type='submit'>
                     SIGN IN
                 </Button>
             </Form>

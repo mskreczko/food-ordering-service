@@ -19,7 +19,6 @@ export default function ForgotPassword() {
 
         fetch('http://localhost:8080/api/v1/auth/forgotPassword?email=' + email)
         .then((resp) => {
-            console.log(resp);
             if (resp.status === 200) {
                 setEmailSent(true);
             } else if (resp.status === 404) {
