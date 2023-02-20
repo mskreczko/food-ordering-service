@@ -37,9 +37,9 @@ export default function Menu() {
             <div className='products'>
                 {products ? products.map((p) => (
                     <div className='products-row' key={p.id}>
-                        <img src='https://via.placeholder.com/150' alt='placeholder'/>
+                        <img width='150' height='150' src={p.imagePath}/>
                         <p>{p.name}</p>
-                        <p>{p.price}</p>
+                        <p>{p.price} PLN</p>
                         <p>{p.description}</p>
                         <a className='add-product-btn' onClick={() => addProductToCart(p)}>ADD TO CART</a>
                     </div>

@@ -29,11 +29,15 @@ public class Product {
 
     private String description;
 
+
+    @Column(name = "image_path")
+    private String imagePath;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "products")
     private Set<Order> orders = new HashSet<>();
 
-    public Product(String name, Double price, String description) {
+    public Product(String name, Double price, String description, String imagePath) {
         this.name = name;
         this.price = price;
         this.description = description;
