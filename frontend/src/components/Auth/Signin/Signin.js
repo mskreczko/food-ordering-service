@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { useRecoilState } from 'recoil';
 import { authenticationState } from '../../atoms/AuthenticationAtom';
 import { Link } from 'react-router-dom';
+import jwt_decode from  'jwt-decode';
 import './Signin.css';
 
 async function signInUser(email, password) {
@@ -42,9 +43,14 @@ export default function Signin() {
             }
             return response.text();
         }).then((data) => {
+            let roles = jwt_decode(data).roles;
             localStorage.setItem("token", data);
             setAuthenticated(true);
-            window.location.href = '/customer';
+            if (roles.includes('ROLE_ADMIN')) {
+                window.location.href = '/admin';
+            } else {
+                window.location.href = '/customer';
+            }
         }).catch(() => {});
     }
 

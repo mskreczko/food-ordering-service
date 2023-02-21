@@ -49,25 +49,27 @@ export default function ShoppingCartDetails() {
 
     return (
         <main id='shopping-cart-details'>
-            <ul id='items-list'>
-                { listProducts && listProducts.map((p, idx) => (
-                    <li key={idx}>
-                        <div className='item-details'>
-                            <p className='item-text left-align'>{p.name} </p>
-                            <p className='item-text'>{p.price} PLN</p>
-                        </div>
-                    </li>
-                ))}
-            </ul>
-            <p>TOTAL: { totalValue } PLN</p>
-            <Form id='promo-code-form' onSubmit={ onSubmit }>
-                <Form.Group>
-                    <Form.Control name='promo-code' type='text' value={ promoCode } onChange={ onChange } placeholder='Enter your code here'/>
-                    { !invalidPromoCode ? <Form.Text style={{color: 'red'}}>Invalid promo code</Form.Text> : null }
-                    <Button id='code-submit-btn' variant='primary' type='submit'>Use promo code</Button>
-                </Form.Group>
-            </Form>
-            <a className='new-order-btn' href='/customer/order/new'>Make an order</a>
+            <div id='shopping-cart-wrapper'>
+                <ul id='items-list'>
+                    { listProducts && listProducts.map((p, idx) => (
+                        <li key={idx}>
+                            <div className='item-details'>
+                                <p className='item-text left-align'>{p.name} </p>
+                                <p className='item-text'>{p.price} PLN</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+                <p>TOTAL: { totalValue } PLN</p>
+                <Form id='promo-code-form' onSubmit={ onSubmit }>
+                    <Form.Group>
+                        <Form.Control name='promo-code' type='text' value={ promoCode } onChange={ onChange } placeholder='Enter your code here'/>
+                        { !invalidPromoCode ? <Form.Text style={{color: 'red'}}>Invalid promo code</Form.Text> : null }
+                        <Button id='code-submit-btn' variant='primary' type='submit'>Use promo code</Button>
+                    </Form.Group>
+                </Form>
+                <a className='new-order-btn' href='/customer/order/new'>Make an order</a>
+            </div>
         </main>
     )
 }

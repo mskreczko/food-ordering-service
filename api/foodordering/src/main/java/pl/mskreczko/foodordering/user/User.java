@@ -17,10 +17,11 @@ import java.util.stream.Collectors;
 @Setter
 @Entity
 @Table(name = "users")
+@SequenceGenerator(name = "user_id_seq", sequenceName = "user_id_seq", initialValue = 2)
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
     @Column(name = "user_id")
     private Long id;
 

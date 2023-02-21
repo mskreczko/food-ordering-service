@@ -9,6 +9,7 @@ import { Outlet } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import './CustomerView.css';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
+
 export default function CustomerView() {
     const authenticated = useRecoilState(authenticationState)[0];
 
