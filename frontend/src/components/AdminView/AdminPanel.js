@@ -1,4 +1,5 @@
 import { useState, useEffect, React } from 'react';
+import './AdminPanel.css';
 
 export default function AdminPanel() {
     const [orders, setOrders] = useState([]);
@@ -15,13 +16,26 @@ export default function AdminPanel() {
 
     return (
         <main>
-            { orders ? orders.map((o) => (
-                <div className='orders-row' key={o.id}>
-                    <p>{o.id}</p>
-                    <p>{o.deliveryAddress}</p>
-                    <p>{o.orderStatus}</p>
-                </div>
-            )) : null}
+            <table style={{marginBottom: '40%'}} className='table table-bordered table-striped table-fixed'>
+                <thead className='table-dark'>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Delivery Address</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { orders ? orders.map((o) => (
+                        <tr key={o.id}>
+                            <td className='fixed-col'>{o.id}</td>
+                            <td className='fixed-col'>{o.deliveryAddress}</td>
+                            <td className='fixed-col'>{o.orderStatus}</td>
+                            <td className='fixed-col'><a className='details-btn' href='/#'>VIEW DETAILS</a></td>
+                        </tr>
+                    )) : null }
+                </tbody>
+            </table>
         </main>
     )
 }
