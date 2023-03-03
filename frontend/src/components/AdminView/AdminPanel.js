@@ -31,7 +31,7 @@ export default function AdminPanel() {
                             <td className='fixed-col'>{o.id}</td>
                             <td className='fixed-col'>{o.deliveryAddress}</td>
                             <td className='fixed-col'>{o.orderStatus}</td>
-                            <td className='fixed-col'><a className='details-btn' href='/#'>VIEW DETAILS</a></td>
+                            <td className='fixed-col'><a className='details-btn' href={'/admin/order/' + o.id}>VIEW DETAILS</a></td>
                         </tr>
                     )) : null }
                 </tbody>

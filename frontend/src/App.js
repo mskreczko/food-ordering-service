@@ -18,6 +18,7 @@ import NewPassword from './components/CustomerView/AccountDetails/NewPassword';
 import NewEmail from './components/CustomerView/AccountDetails/NewEmail';
 import ForgotPassword from './components/Auth/ForgotPassword';
 import ResetPassword from './components/Auth/ResetPassword';
+import SingleOrderDetails from './components/CustomerView/Order/SingleOrderDetails';
 
 export default function App() {
   return (
@@ -48,6 +49,7 @@ export default function App() {
 
             <Route path='/admin' element={<AdminView/>}>
               <Route index element={<AdminPanel/>}/>
+              <Route path='order/:id' element={<SingleOrderDetails/>}/>
             </Route>
           </Routes>
       </div>
