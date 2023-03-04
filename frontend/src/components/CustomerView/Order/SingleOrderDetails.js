@@ -1,13 +1,11 @@
 import { React, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import OrderStatusChange from './OrderStatusChange';
 import './SingleOrderDetails.css';
-
-const changeOrderStatus = (id, newStatus) => {
-
-}
 
 export default function SingleOrderDetails() {
     const [details, setDetails] = useState({});
+    const [popup, showPopup] = useState(false);
     const params = useParams();
 
     useEffect(() => {
@@ -21,6 +19,14 @@ export default function SingleOrderDetails() {
         .then((body) => setDetails(body));
     }, []);
 
+    const handlePopupClick = () => {
+        if (!popup) {
+            showPopup(true);
+        } else {
+            showPopup(false);
+        }
+    }
+
     return (
         <main className='single-order-details'>
             <h2>Order Details</h2>
@@ -33,7 +39,8 @@ export default function SingleOrderDetails() {
                 )) : null}
                 </ul>
             </div>
-            <button className='change-btn' onClick={changeOrderStatus()}>CHANGE STATUS</button>
+            <button className='change-btn' onClick={(e) => handlePopupClick()}>CHANGE STATUS</button>
+            { popup ? <OrderStatusChange id={params.id}/> : null }
         </main>
     )
 }
