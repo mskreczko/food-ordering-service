@@ -8,7 +8,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import pl.mskreczko.foodordering.admin.AdminProductController;
 import pl.mskreczko.foodordering.product.Product;
 import pl.mskreczko.foodordering.product.ProductService;
 import pl.mskreczko.foodordering.product.dto.NewProductDto;
@@ -72,7 +71,7 @@ public class AdminProductControllerTest {
 
     @Test
     void deleteProduct_should_return_ok() throws Exception {
-        Product p = new Product("food", 1.0, "test");
+        Product p = new Product("food", 1.0, "test", "");
 
         Mockito.when(productService.getProductById(1L)).thenReturn(Optional.of(p));
         doNothing().when(productService).deleteById(1L);
@@ -81,4 +80,5 @@ public class AdminProductControllerTest {
                 .delete("/api/v1/admin/products?productId=1").with(user("admin").roles("ADMIN")).with(csrf()))
                 .andExpect(status().isOk());
     }
+
 }
