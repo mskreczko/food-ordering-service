@@ -3,6 +3,7 @@ package pl.mskreczko.foodordering.admin;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.mskreczko.foodordering.exceptions.NoSuchEntityException;
 import pl.mskreczko.foodordering.order.Order;
 import pl.mskreczko.foodordering.order.OrderService;
 import pl.mskreczko.foodordering.order.OrderStatus;
@@ -24,9 +25,13 @@ public class AdminOrderController {
     }
 
     @PatchMapping("/status/{order_id}")
-    public ResponseEntity<?> updateOrderStatus(@PathVariable("order_id") Long orderId, @RequestParam Integer status) {
-        orderService.updateStatus(orderId, OrderStatus.values()[status]);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> updateOrderStatus(@PathVariable("order_id") Long orderId, @RequestParam("status") Integer status) {
+        try {
+            orderService.updateStatus(orderId, OrderStatus.values()[status]);
+            return ResponseEntity.ok().build();
+        } catch (NoSuchEntityException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("{order_id}")

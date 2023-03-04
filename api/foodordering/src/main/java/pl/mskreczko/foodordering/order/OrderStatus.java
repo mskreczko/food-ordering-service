@@ -8,8 +8,8 @@ public enum OrderStatus {
     AWAITS,
     @JsonProperty("IN PREPARATION")
     IN_PREPARATION,
-    @JsonProperty("DELIVERING")
-    DELIVERING,
+    @JsonProperty("BEING DELIVERED")
+    BEING_DELIVERED,
     @JsonProperty("DELIVERED")
     DELIVERED
 }

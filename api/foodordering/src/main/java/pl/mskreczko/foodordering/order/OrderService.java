@@ -47,8 +47,10 @@ public class OrderService {
         return orderRepository.save(order).getId();
     }
 
-    public void updateStatus(Long orderId, OrderStatus orderStatus) {
-        orderRepository.updateStatus(orderId, orderStatus.ordinal());
+    public void updateStatus(Long orderId, OrderStatus orderStatus) throws NoSuchEntityException {
+        var order = orderRepository.findById(orderId).orElseThrow(() -> new NoSuchEntityException(("No order with given id")));
+        order.setOrderStatus(orderStatus);
+        orderRepository.save(order);
     }
 
     public List<Order> getAllOrders() {

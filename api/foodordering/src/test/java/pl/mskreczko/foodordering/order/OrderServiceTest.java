@@ -79,4 +79,24 @@ public class OrderServiceTest {
         Mockito.verify(productService).getProductsByIds(List.of(1L, 2L));
         Mockito.verify(userService).addLoyaltyPoints(user);
     }
+
+    @Test
+    void testUpdateStatus_updatesStatus() {
+        Order order = new Order(1L, null, null, "asdf", OrderStatus.AWAITS);
+
+        Mockito.when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+        orderService.updateStatus(1L, OrderStatus.IN_PREPARATION);
+
+        Mockito.verify(orderRepository).findById(1L);
+        Mockito.verify(orderRepository).save(order);
+    }
+
+    @Test
+    void testUpdateStatus_throws() {
+        Mockito.when(orderRepository.findById(1L)).thenReturn(Optional.empty());
+
+        Assertions.assertThrows(NoSuchEntityException.class,
+                () -> orderService.updateStatus(1L, OrderStatus.IN_PREPARATION));
+    }
 }
