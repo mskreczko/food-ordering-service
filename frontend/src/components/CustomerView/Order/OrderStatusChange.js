@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import './SingleOrderDetails.css';
 
 export default function OrderStatusChange(id) {
     const [val, setVal] = useState('');
@@ -25,7 +26,7 @@ export default function OrderStatusChange(id) {
                 <option value='2'>BEING DELIVERED</option>
                 <option value='3'>DELIVERED</option>
             </select>
-            <button type='submit'>CHANGE</button>
+            <button className='status-change-btn' type='submit'>CHANGE</button>
         </form>
     )
 }
