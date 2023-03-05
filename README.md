@@ -21,11 +21,13 @@ docker-compose up --build
 ```
 
 <hr>
+
 ![Hero](https://github.com/mskreczko/food-ordering-service/blob/main/images/hero.png?raw=true)
 
 ![Sign in](https://github.com/mskreczko/food-ordering-service/blob/main/images/login.png?raw=true)
 
 <hr>
+
 ## Customer view
 
 ![Menu](https://github.com/mskreczko/food-ordering-service/blob/main/images/menu.png?raw=true)
@@ -39,6 +41,7 @@ docker-compose up --build
 ![User Order Details](https://github.com/mskreczko/food-ordering-service/blob/main/images/user_order_details.png?raw=true)
 
 <hr>
+
 ## Admin view
 
 ![Admin Orders View](https://github.com/mskreczko/food-ordering-service/blob/main/images/admin_orders_view.png?raw=true)
