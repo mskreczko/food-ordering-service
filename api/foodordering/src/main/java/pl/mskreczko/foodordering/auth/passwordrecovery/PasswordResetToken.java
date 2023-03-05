@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import pl.mskreczko.foodordering.user.User;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @NoArgsConstructor
 @Entity
