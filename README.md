@@ -34,7 +34,7 @@ docker-compose up --build
 
 ![Account Details](https://github.com/mskreczko/food-ordering-service/blob/main/images/account_details.png?raw=true)
 
-![Shopping Cart](https://github.com/mskreczko/food-ordering-service/blob/main/images/shopping_cart?raw=true)
+![Shopping Cart](https://github.com/mskreczko/food-ordering-service/blob/main/images/shopping_cart.png?raw=true)
 
 ![Payment](https://github.com/mskreczko/food-ordering-service/blob/main/images/payment.png?raw=true)
 
