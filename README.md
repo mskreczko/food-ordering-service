@@ -17,6 +17,9 @@ Technologies used:
 Commands to run project:
 ```
 git clone https://github.com/mskreczko/food-ordering-service.git
+cd api/foodordering
+mvn -Dmaven.test.skip install
+cd ../../
 docker-compose up --build
 ```
 
