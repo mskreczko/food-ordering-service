@@ -29,6 +29,7 @@ services:
       - 5432:5432
     volumes:
       - foodordering-data:/var/lib/postgresql/data
+      - -./api/foodordering/src/main/resources/import.sql:/docker-entrypoint-initdb.d/import.sql
     networks:
       - spring-postgres
   frontend:
